@@ -25,7 +25,6 @@ class UserAuthenticationUseCase {
   ) {}
 
   async execute({ email, password }: IRequest): Promise<IResponse> {
-    console.log("tá coisando?");
     const user = await this.usersRepository.findByEmail(email);
 
     if (!user) {
