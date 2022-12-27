@@ -1,4 +1,6 @@
-import { CategoriesRepositoryInMemory } from "../../repositories/in-memory/CategoriesRepositoryInMemory";
+import { CategoriesRepositoryInMemory } from "@modules/cars/repositories/in-memory/CategoriesRepositoryInMemory";
+import { AppError } from "@shared/errors/AppError";
+
 import { CreateCategoryUseCase } from "./CreateCategoryUseCase";
 
 let createCategoryUseCase: CreateCategoryUseCase;
@@ -28,5 +30,24 @@ describe("Create Category", () => {
     );
 
     expect(categoryCreated).toHaveProperty("id");
+  });
+
+  it("should not be able to create a new Category with the same name", async () => {
+    expect(async () => {
+      const category = {
+        name: "4x4",
+        description: "Utilizado para terrenos difíceis",
+      };
+
+      await createCategoryUseCase.execute({
+        name: category.name,
+        description: category.description,
+      });
+
+      await createCategoryUseCase.execute({
+        name: category.name,
+        description: category.description,
+      });
+    }).rejects.toBeInstanceOf(AppError);
   });
 });
