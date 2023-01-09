@@ -1,9 +1,8 @@
 import { Router } from "express";
 
 import { CreateCarController } from "@modules/cars/useCases/createCar/CreateCarController";
-
-import { ensureAdmin } from "../middlewares/ensureAdmin";
-import { ensureAuthentication } from "../middlewares/ensureAuthentication";
+import { ensureAdmin } from "@shared/infra/http/middlewares/ensureAdmin";
+import { ensureAuthentication } from "@shared/infra/http/middlewares/ensureAuthentication";
 
 const carsRoutes = Router();
 
