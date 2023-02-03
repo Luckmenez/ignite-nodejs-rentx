@@ -18,6 +18,7 @@
     "multer": "^1.4.4",
     "pg": "^8.7.1",
     "reflect-metadata": "^0.1.13",
+    "supertest": "^6.3.3",
     "swagger-ui-express": "^4.2.0",
     "tsyringe": "^4.7.0",
     "typeorm": "^0.2.41",
@@ -27,13 +28,14 @@
   "scripts": {
     "dev": "ts-node-dev -r tsconfig-paths/register --inspect --poll --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli",
-    "test": "jest",
+    "test": "set NODE_ENV=test&&jest --runInBand",
     "seed:admin": "ts-node-dev src/shared/infra/typeorm/seed/admin.ts"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
     "@types/jest": "^29.1.2",
     "@types/jsonwebtoken": "^8.5.9",
+    "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.6.0",
     "@typescript-eslint/parser": "^5.6.0",
     "eslint": "^8.2.0",
