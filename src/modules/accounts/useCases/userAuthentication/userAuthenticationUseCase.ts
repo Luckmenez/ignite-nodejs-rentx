@@ -67,7 +67,7 @@ class UserAuthenticationUseCase {
     );
 
     await this.usersTokenRepository.create({
-      user_id: user,
+      user_id: user.id,
       refresh_token,
       expires_date: refresh_token_expires_date,
     });
